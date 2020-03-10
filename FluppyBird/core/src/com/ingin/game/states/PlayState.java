@@ -67,11 +67,11 @@ public class PlayState extends State {
         if(bird.getPosition().y <= ground.getHeight() + GROUND_Y_OFFSET){
             gsm.set(new PlayState(gsm));
         }else {
-//            System.out.println("=======================================");
-//            System.out.println("Høyde over bakken: " + (bird.getPosition().y - ground.getHeight() - GROUND_Y_OFFSET));
-//            System.out.println("Lengde til første tube: " + (tubes.get(tubeCounter % TUBE_COUNT).getPosBotTube().x - bird.getPosition().x));
-            System.out.println("Top tube y: " + Math.abs(bird.getPosition().x - tubes.get(tubeCounter % TUBE_COUNT).getPosTopTube().y));
-            System.out.println("Bot tube y: " + Math.abs(bird.getPosition().x - tubes.get(tubeCounter % TUBE_COUNT).getPosBotTube().y));
+            System.out.println("=======================================");
+            System.out.println("Høyde over bakken: " + (bird.getPosition().y - ground.getHeight() - GROUND_Y_OFFSET));
+            System.out.println("Lengde til første tube: " + (tubes.get(tubeCounter % TUBE_COUNT).getPosBotTube().x - bird.getPosition().x));
+            System.out.println("Top tube y: " + tubes.get(tubeCounter % TUBE_COUNT).getPosTopTube().y);
+            System.out.println("Bot tube y: " + (tubes.get(tubeCounter % TUBE_COUNT).getPosBotTube().y + tubes.get(tubeCounter % TUBE_COUNT).getBottomTube().getHeight()));
             if ((tubes.get(tubeCounter % TUBE_COUNT).getPosBotTube().x - bird.getPosition().x) < 0)
                 tubeCounter++;
         }
