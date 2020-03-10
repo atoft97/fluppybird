@@ -22,6 +22,8 @@ public class PlayState extends State {
 
     private Array<Tube> tubes;
 
+    private int tubeCounter = 0;
+
     public PlayState(GameStateManager gsm) {
         super(gsm);
         bird = new Bird(50,300);
@@ -64,7 +66,17 @@ public class PlayState extends State {
         }
         if(bird.getPosition().y <= ground.getHeight() + GROUND_Y_OFFSET){
             gsm.set(new PlayState(gsm));
+        }else {
+//            System.out.println("=======================================");
+//            System.out.println("Høyde over bakken: " + (bird.getPosition().y - ground.getHeight() - GROUND_Y_OFFSET));
+//            System.out.println("Lengde til første tube: " + (tubes.get(tubeCounter % TUBE_COUNT).getPosBotTube().x - bird.getPosition().x));
+            System.out.println("Top tube y: " + Math.abs(bird.getPosition().x - tubes.get(tubeCounter % TUBE_COUNT).getPosTopTube().y));
+            System.out.println("Bot tube y: " + Math.abs(bird.getPosition().x - tubes.get(tubeCounter % TUBE_COUNT).getPosBotTube().y));
+            if ((tubes.get(tubeCounter % TUBE_COUNT).getPosBotTube().x - bird.getPosition().x) < 0)
+                tubeCounter++;
         }
+
+
         cam.update();
     }
 
@@ -92,7 +104,6 @@ public class PlayState extends State {
         for (Tube tube : tubes) {
             tube.dispose();
         }
-        System.out.println("Play State Disposed");
     }
 
     private void updateGround() {
