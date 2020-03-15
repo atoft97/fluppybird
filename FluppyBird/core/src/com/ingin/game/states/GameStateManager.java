@@ -8,6 +8,7 @@ public class GameStateManager {
 
     private Stack<State> states;
 
+
     public GameStateManager() {
         states = new Stack<State>();
     }
